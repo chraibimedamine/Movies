@@ -568,6 +568,25 @@ const movies = [
             { name: 'Saoirse Ronan', character: 'Agatha' },
             { name: 'Adrien Brody', character: 'Dmitri' }
         ]
+    },
+    // Turkish Series
+    {
+        id: 'movie-31',
+        title: 'Kurtlar Vadisi Pusu',
+        plot: 'An intense Turkish action drama series following Polat Alemdar and his team as they combat shadowy organizations and forces seeking to destabilize Turkey. The series delves into themes of politics, national security, and Middle Eastern conflicts.',
+        releaseYear: 2007,
+        runtime: 90,
+        rating: 8.5,
+        poster: '/kurtlar_vadisi_pusu.jpg',
+        backdrop: '/kurtlar_vadisi_pusu.jpg',
+        director: 'Sadullah Şentürk',
+        genres: ['Action', 'Drama', 'Thriller'],
+        cast: [
+            { name: 'Necati Şaşmaz', character: 'Polat Alemdar' },
+            { name: 'Gürkan Uygun', character: 'Memati Baş' },
+            { name: 'Kenan Çoban', character: 'Abdülhey Çoban' },
+            { name: 'Erhan Ufak', character: 'Güllü Erhan' }
+        ]
     }
 ];
 
@@ -680,6 +699,12 @@ async function seed() {
         // Create sample reviews
         console.log('\n⭐ Creating sample reviews...');
         const reviews = [
+            { userId: 'user-1', movieId: 'movie-11', rating: 10.0, text: "The Matrix is a revolutionary masterpiece! It changed cinema forever. The action, philosophy, and visual effects are unmatched." },
+            { userId: 'user-2', movieId: 'movie-11', rating: 10.0, text: "Red pill or blue pill? This movie will blow your mind! Keanu Reeves is absolutely legendary as Neo." },
+            { userId: 'user-admin', movieId: 'movie-11', rating: 10.0, text: "A groundbreaking sci-fi thriller that defined a generation. The bullet-time effects are still iconic today!" },
+            { userId: 'user-1', movieId: 'movie-31', rating: 9.8, text: "Kurtlar Vadisi Pusu is an absolute masterpiece of Turkish television! The action, drama, and patriotic themes are unmatched." },
+            { userId: 'user-2', movieId: 'movie-31', rating: 9.7, text: "Polat Alemdar is the most iconic character in Turkish TV history. This series is legendary!" },
+            { userId: 'user-admin', movieId: 'movie-31', rating: 9.6, text: "A gripping political thriller that keeps you on the edge of your seat. Must watch!" },
             { userId: 'user-1', movieId: 'movie-1', rating: 9.5, text: "An absolute masterpiece! Heath Ledger's Joker is legendary and defines the superhero genre." },
             { userId: 'user-1', movieId: 'movie-2', rating: 9.0, text: "Mind-bending and visually stunning. Nolan at his best! The ending still gives me chills." },
             { userId: 'user-1', movieId: 'movie-15', rating: 10.0, text: "The greatest movie ever made. A story of hope and perseverance that resonates with everyone." },
@@ -707,7 +732,7 @@ async function seed() {
 
         // Create views for trending
         console.log('\n👁️  Creating views for trending...');
-        const viewedMovies = ['movie-1', 'movie-2', 'movie-4', 'movie-13', 'movie-23', 'movie-24', 'movie-8', 'movie-9'];
+        const viewedMovies = ['movie-11', 'movie-11', 'movie-11', 'movie-11', 'movie-11', 'movie-31', 'movie-31', 'movie-1', 'movie-2', 'movie-4', 'movie-13', 'movie-23', 'movie-24', 'movie-8', 'movie-9'];
         for (const movieId of viewedMovies) {
             await session.run(`
         MATCH (u:User {id: 'user-1'}), (m:Movie {id: $movieId})
